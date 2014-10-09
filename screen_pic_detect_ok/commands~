@@ -1,0 +1,23 @@
+
+
+
+
+ -------------------------------------------------------------------
+ <pic_proc>   <OK>
+
+
+> g++ pic_proc.h pic_proc.cpp   -I ./include -L. -lvl -lopencv_core -lopencv_highgui -lopencv_imgproc -llinear  -fPIC -shared -o libpic_proc.so 
+
+> g++ -g  test_pic_proc.cpp -L. -lpic_proc  -I ./include -L. -lvl -lopencv_core -lopencv_highgui -lopencv_imgproc  -llinear -o test_pic_proc
+
+// for image resize test;
+> ./test_pic_proc resize -i ./testimgs/test11.jpg -o ./testimgs/test11_resize.jpg -s 100
+
+ // for detect one img;
+> ./test_pic_proc detect -i ./testimgs/test11.jpg 
+
+// for model train;
+> ./test_pic_proc train -p ./train/pos_imgs/ -n ./train/neg_imgs/
+
+// for duplicate detect;
+> ./test_pic_proc dup_detect ./testimgs/test1.jpg ./testimgs/test2.jpg
